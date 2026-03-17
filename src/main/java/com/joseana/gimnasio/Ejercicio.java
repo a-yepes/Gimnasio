@@ -3,9 +3,9 @@ package com.joseana.gimnasio;
 public abstract class Ejercicio {
     protected String id;
     protected String nombre;
-    protected int duracionMinutos;
+    protected Integer duracionMinutos;
 
-    public Ejercicio(String id,String nombre,int duracionMinutos){
+    public Ejercicio(String id,String nombre,Integer duracionMinutos){
         this.id=id;
         this.nombre=nombre;
         this.duracionMinutos=duracionMinutos;
@@ -18,7 +18,7 @@ public abstract class Ejercicio {
         }
 
     }
-    public abstract double calcularCalorias();
+    public abstract Double calcularCalorias();
     public abstract String resumen();
 
     
