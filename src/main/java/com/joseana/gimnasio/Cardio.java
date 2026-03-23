@@ -9,10 +9,30 @@ public class Cardio extends Ejercicio implements Medible, Exportable {
         this.distanciaKM=distanciaKM;
         this.ritmoMedio=ritmoMedio;
     }
+    public Double getDistanciaKM(){
+        return this.distanciaKM;
+    }
+
     //metodos heredados de ejercicio
     @Override
     public Double calcularCalorias(){
-        return null;
+        double calorias= (getDistanciaKM()*2);
+        return calorias;
+        
+       
+        /*
+        AQUÍ PLANEAMOS HACER UN BUCLE IF O SWITCH PARA CALCULAR 
+        LAS CALORIAS QUEMADAS EN FUNCIÓN DE LA DISTANCIA Y EL RITMO... YA VEREMOS xD
+        
+        SWITCH () {
+            case :
+                
+                break;
+            default:
+                throw new AssertionError();
+        }
+        return null; 
+        */
 
         
     }
@@ -24,12 +44,20 @@ public class Cardio extends Ejercicio implements Medible, Exportable {
     //metodos de las interfaces medible y exportable
     @Override
     public double obtenerValorMedicion() {
-        return distanciaKm;
+        return distanciaKM;
     }
 
     @Override
-    public String toJson() {
-        return "{ \"tipo\": \"cardio\", \"nombre\": \"" + nombre + "\", \"distancia\": " + distanciaKm + " }";
+    public String toJson() { 
+       return new StringBuilder()
+            .append("tipo: cardio,")
+            .append("id:").append(id).append(",")
+            .append("nombre: ").append(nombre).append(",")
+            .append("duracion:").append(duracionMinutos).append(",")
+            .append("distancia:").append(distanciaKM).append(",")
+            .append("ritmo:").append(ritmoMedio)  
+            .toString();
+
     }
 
     

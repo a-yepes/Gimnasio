@@ -1,6 +1,6 @@
 package com.joseana.gimnasio;
 
-public class Fuerza extends Ejercicio {
+public class Fuerza extends Ejercicio implements Medible, Exportable {
     protected Integer repeticiones;
     protected Double pesoKG;
 
@@ -8,6 +8,12 @@ public class Fuerza extends Ejercicio {
         super(id, nombre, duracionMinutos);
         this.repeticiones=repeticiones;
         this.pesoKG=pesoKG;
+    }
+    public Integer getRepeticiones(){
+        return repeticiones;
+    }
+    public Double getPesoKG(){
+        return pesoKG;
     }
 
     @Override
@@ -17,6 +23,16 @@ public class Fuerza extends Ejercicio {
     @Override
     public String resumen() {
         return null;
+    }
+    //metodos de las interfaces medible y exportable
+    @Override
+    public double obtenerValorMedicion() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public String toJson() {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
     
 
