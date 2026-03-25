@@ -5,22 +5,24 @@ public abstract class Ejercicio {
     protected String nombre;
     protected Integer duracionMinutos;
 
-    public Ejercicio(String id,String nombre,Integer duracionMinutos){
-        this.id=id;
-        this.nombre=nombre;
-        this.duracionMinutos=duracionMinutos;
+    public Ejercicio(String id, String nombre, Integer duracionMinutos) {
+        this.id = id;
+        this.nombre = nombre;
+        this.duracionMinutos = duracionMinutos;
 
-        if(duracionMinutos<0){
+        if (duracionMinutos < 0) {
             System.err.println("La duracion debe ser mayor a cero");
         }
-        if(nombre.isEmpty()){
+        if (nombre.isEmpty()) {
             System.err.println("El nombre no puede estar vacio.");
         }
 
     }
-    public abstract Double calcularCalorias();
+
+    public String getId() {
+        return id;
+    }
+
     public abstract String resumen();
 
-    
-    
 }
