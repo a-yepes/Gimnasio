@@ -36,24 +36,78 @@ public class App {
                         break;
                     }
                      //pedimos datos
-                    System.out.println("Nombre:");
-                    String nombre = sc.nextLine();
-
-                    System.out.println("Distancia:");
-                    double d = sc.nextDouble();
-
-                    System.out.println("Ritmo:");
-                    double r = sc.nextDouble();
-
-                    sc.nextLine(); 
-                    // crear objeto para guardarlo ej: Cardio c = new cardio (datos nuevos de arriba) 
-                    //¿Hay que hacerlo con cada categoria? (cardio,flexibilidad,fuerza)
+                    System.out.println("¿Qué tipo de ejercicio quieres añadir? 1: Cardio , 2: Fuerza, 3: Flexibilidad");
+                    Integer tipo = sc.nextInt();
                     
+                        switch (tipo) {
+                            case 1: 
+                                System.out.println("ID");
+                                String idc = sc.nextLine();
 
-                    // guardar 
-                    e.agregarEjercicio(x);
+                                System.out.println("Nombre:");
+                                String nc = sc.nextLine();
+                                
+                                System.out.println("Duración (min):");
+                                Integer duracionc = sc.nextInt();
 
-                    System.out.println("Ejercicio añadido");
+                                System.out.println("Distancia (km):");
+                                double distanciac = sc.nextDouble();
+
+                                System.out.println("Ritmo medio:");
+                                double rc = sc.nextDouble();
+
+                                Cardio c = new Cardio(distanciac, rc, idc, nc, duracionc);
+                                e.agregarEjercicio(c);
+                 
+                                break; 
+
+                            case 2: 
+
+                                System.out.println("ID");
+                                String idf = sc.nextLine();
+
+                                System.out.println("Nombre:");
+                                String nf = sc.nextLine();
+                                
+                                System.out.println("Duración (min):");
+                                Integer duracionf = sc.nextInt();
+
+                                System.out.println("Repeticiones");
+                                Integer repeticionesf = sc.nextInt();
+
+                                System.out.println("Peso (kg)");
+                                double pf = sc.nextDouble();
+
+                                Fuerza f = new Fuerza(repeticionesf, pf, idf, nf, duracionf);
+                                e.agregarEjercicio(f);
+                 
+                                break;
+
+                            case 3: 
+                                System.out.println("ID");
+                                String idflex= sc.nextLine();
+
+                                System.out.println("Nombre:");
+                                String nflex= sc.nextLine();
+                                
+                                System.out.println("Duración (min):");
+                                Integer duracionflex = sc.nextInt();
+
+                                System.out.println("Nivel intensidad:");
+                                Integer iflex = sc.nextInt();
+
+                                Flexibilidad flex = new Flexibilidad(iflex, idflex, nflex, duracionflex);
+                                e.agregarEjercicio(flex);
+                 
+                                break; 
+
+
+                            default:
+                                throw new AssertionError();
+                        }
+
+
+                    System.out.println("¡Ejercicio añadido!");
                     break;
 
                     
@@ -69,7 +123,17 @@ public class App {
                     break;
 
                 case 4:
-                    //COMPLETAR
+                    System.out.println("Introduce el ID a buscar:");
+                    String idBuscar = sc.nextLine();
+
+                    Ejercicio encontrado = e.buscarPorId(idBuscar);
+                    
+                    if (encontrado != null){
+                        System.out.println("Ejercicio encontrado:");
+                        System.out.println(encontrado.resumen());
+                    } else {
+                        System.out.println("No existe ningún ejercicio con ese ID.");
+                    }
                     break;
 
                 case 5:

@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
+
 //usar 4 stream, 1 regex,1 iterator, un array
 public class Entrenamientos {
     //crud con araylist y hashmap
@@ -71,7 +72,15 @@ public class Entrenamientos {
         return total;
     }
 
-    //filtrar con stream (por duracion?)
+    //CAMBIAR ESTOS COMENTARIOS filtrar con stream (por duracion?)
+
+    public Ejercicio buscarPorId(String id){
+        return lista.stream()       
+                .filter(e -> e.getId().equalsIgnoreCase(id))
+                .findFirst()
+                .orElse(null);
+    }
+
     //ordenar con stream 
     //agrupar con stream(por tipo?)
 }

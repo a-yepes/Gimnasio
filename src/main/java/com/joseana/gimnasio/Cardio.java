@@ -14,13 +14,15 @@ public class Cardio extends Ejercicio implements Medible, Exportable {
         return this.distanciaKM;
     }
 
+    public Double getRitmoMedio(){
+        return this.ritmoMedio;
+    }
+
     // metodos heredados de ejercicio
 
     @Override
     public Double calcularCalorias() {
-
-        return distanciaKM * ritmoMedio;
-
+        return getDistanciaKM() * getRitmoMedio();
     }
 
     @Override

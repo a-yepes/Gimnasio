@@ -9,17 +9,17 @@ public class Flexibilidad extends Ejercicio implements Medible, Exportable{
         this.nivelIntensidad=nivelIntensidad;
     }
     public Integer getNivelIntensidad(){
-        return nivelIntensidad;
+        return this.nivelIntensidad;
     }
 
     public Integer getDuracionMinutos(){
-        return duracionMinutos;
+        return this.duracionMinutos;
     }
 
     @Override
     public Double calcularCalorias(){
+        return (double) (getNivelIntensidad() * getDuracionMinutos());
         
-        return null;
     
     }
     @Override

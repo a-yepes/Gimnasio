@@ -11,16 +11,16 @@ public class Fuerza extends Ejercicio implements Medible, Exportable {
     }
 
     public Integer getRepeticiones() {
-        return repeticiones;
+        return this.repeticiones;
     }
 
     public Double getPesoKG() {
-        return pesoKG;
+        return this.pesoKG;
     }
 
     @Override
     public Double calcularCalorias() {
-        return repeticiones * pesoKG;
+        return getRepeticiones() * getPesoKG();
     }
 
     @Override
