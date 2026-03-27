@@ -25,4 +25,6 @@ public abstract class Ejercicio {
 
     public abstract String resumen();
 
+    public abstract String toJson();
+
 }

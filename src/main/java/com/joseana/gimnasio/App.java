@@ -2,47 +2,49 @@ package com.joseana.gimnasio;
 
 import java.util.Scanner;
 
- /*3 mecanismos de E/S de ficheros: BufferedReader (lectura), FileWriter+BufferedWriter (escritura), RandomAccessFile (acceso por ID).
-    Todos los accesos a fichero con try-with-resources.*/
-
 public class App {
     public static void main(String[] args) {
         //crear objeto 
         Entrenamientos e = new Entrenamientos();
 
-        // menu
-        System.out.println("¡Hola! Bienvenid@ a tu App de Entrenamiento.");
         Scanner sc= new Scanner(System.in);
+        Integer opcion;
+
+        // menu
+        
+        System.out.println("¡Hola! Bienvenid@ a tu App de Entrenamiento.");
+
+        do {
         System.out.println("¿Que quieres hacer?");
             System.out.println("1. Añadir ejercicio");
             System.out.println("2. Ver ejercicios");
             System.out.println("3. Eliminar ejercicio");
             System.out.println("4. Buscar ejercicio");
-            System.out.println("5. Total calorías");
+            System.out.println("5. Total calorias");
             System.out.println("6. Tiempo total de entreno");
+            System.out.println("7. Recuperar sesion");
+            System.out.println("8. Exportar sesion");
             System.out.println("0. Salir");
         
-            Integer opcion= sc.nextInt();
+            opcion= sc.nextInt();
             sc.nextLine();//por si quedan residuos lo limpiamos
 
             switch(opcion){
                 case 1:
-                    System.out.println("ID (formato AB12): ");
-                    String id = sc.nextLine();
-
-                    // validación regex
-                    if(!id.matches("[A-Z]{2}\\d{2}")){ ////mayusculas, dos letras, 2 numeros
-                        System.out.println("ID inválido");
-                        break;
-                    }
                      //pedimos datos
                     System.out.println("¿Qué tipo de ejercicio quieres añadir? 1: Cardio , 2: Fuerza, 3: Flexibilidad");
                     Integer tipo = sc.nextInt();
+                    sc.nextLine();
                     
                         switch (tipo) {
                             case 1: 
                                 System.out.println("ID");
                                 String idc = sc.nextLine();
+                                // validación regex
+                                if(!idc.matches("[A-Z]{2}\\d{2}")){ //mayusculas, dos letras, 2 numeros
+                                    System.out.println("ID inválido");
+                                    continue;//para que vuelva al menu
+                                }
 
                                 System.out.println("Nombre:");
                                 String nc = sc.nextLine();
@@ -65,6 +67,11 @@ public class App {
 
                                 System.out.println("ID");
                                 String idf = sc.nextLine();
+                                
+                                if(!idf.matches("[A-Z]{2}\\d{2}")){
+                                    System.out.println("ID inválido");
+                                    continue;
+                                }
 
                                 System.out.println("Nombre:");
                                 String nf = sc.nextLine();
@@ -86,6 +93,11 @@ public class App {
                             case 3: 
                                 System.out.println("ID");
                                 String idflex= sc.nextLine();
+                                
+                                if(!idflex.matches("[A-Z]{2}\\d{2}")){ 
+                                    System.out.println("ID inválido");
+                                    continue;
+                                }
 
                                 System.out.println("Nombre:");
                                 String nflex= sc.nextLine();
@@ -101,9 +113,6 @@ public class App {
                  
                                 break; 
 
-
-                            default:
-                                throw new AssertionError();
                         }
 
 
@@ -120,6 +129,7 @@ public class App {
                     System.out.println("ID a eliminar:");
                     String idEliminar = sc.nextLine();
                     e.eliminarEjercicio(idEliminar);
+                    
                     break;
 
                 case 4:
@@ -144,19 +154,24 @@ public class App {
                     System.out.println("Tiempo total de entreno: " + e.tiempoTotal());
                     break;
 
+                case 7:
+                    e.importarJSON("datos.json");
+                    break;
+
+                case 8:
+                    e.exportarJSON("datos.json");
+                    break;
+
             
 
                 case 0:
                     System.out.println("¡Hasta pronto!");
 
-            }
+            } 
+        }while (opcion != 0);
 
             
 
         sc.close();
     }
 }
-
-        
-    
-

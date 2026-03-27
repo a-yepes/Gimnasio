@@ -9,11 +9,6 @@ public interface  Exportable {
 
     String toJson();
 
-    /*usar string builder : ir construyendo con .append y luego juntarlo todo con .toString.
-    fromjson: coge un entrenamiento, llama a todos los ejercicios tojson, crea un array y lo mete en un arhivo (y viceversa)
-
-    
-   */
 
     
 }

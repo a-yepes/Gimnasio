@@ -24,26 +24,30 @@ public class Flexibilidad extends Ejercicio implements Medible, Exportable{
     }
     @Override
     public String resumen(){
-        return null;
+        return "Flexibilidad: " + nombre + " - intensidad " + nivelIntensidad + " durante " + duracionMinutos + " minutos";
     }
-
-    //metodos de las interfaces medible y exportable
-    @Override
-    double obtenerValorMedicion();
 
     @Override
     public String toJson() { 
        return new StringBuilder()
-            .append("tipo: cardio,")
+            .append("tipo: flexibilidad,")
             .append("id:").append(id).append(",")
             .append("nombre: ").append(nombre).append(",")
             .append("duracion:").append(duracionMinutos).append(",")
             .append("intensidad:").append(nivelIntensidad).append(",")
               
             .toString();
-
+        
     }
-    
 
-    
+    // método JSON
+    public static Flexibilidad fromJson(String json) {
+        String id = json.split("id:")[1].split(",")[0].trim();
+        String nombre = json.split("nombre:")[1].split(",")[0].trim();
+        int duracion = Integer.parseInt(json.split("duracion:")[1].split(",")[0].trim());
+        int intensidad = Integer.parseInt(json.split("intensidad:")[1].trim().replace("}", ""));
+
+        return new Flexibilidad(intensidad, id, nombre, duracion);
+    }
+       
 }

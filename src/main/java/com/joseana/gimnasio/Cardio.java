@@ -27,13 +27,7 @@ public class Cardio extends Ejercicio implements Medible, Exportable {
 
     @Override
     public String resumen() {
-        return "Cardio: " + nombre + " - " + distanciaKM + " km en " + duracionMinutos + " min";
-    }
-
-    // metodos de las interfaces medible y exportable
-    @Override
-    public double obtenerValorMedicion() {
-        return distanciaKM;
+        return "Cardio: " + nombre + " - " + distanciaKM + " km en " + duracionMinutos + " minutos";
     }
 
     @Override
@@ -50,4 +44,16 @@ public class Cardio extends Ejercicio implements Medible, Exportable {
                 .toString();
     }
 
+
+    // método JSON para cardio
+    public static Cardio fromJson(String json) {
+
+    String id = json.split("id:")[1].split(",")[0].trim();
+    String nombre = json.split("nombre:")[1].split(",")[0].trim();
+    int duracion = Integer.parseInt(json.split("duracion:")[1].split(",")[0].trim());
+    double distancia = Double.parseDouble(json.split("distancia:")[1].split(",")[0].trim());
+    double ritmo = Double.parseDouble(json.split("ritmo:")[1].replace("}", "").trim());
+
+    return new Cardio(distancia, ritmo, id, nombre, duracion);
+}
 }

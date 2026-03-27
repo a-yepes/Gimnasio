@@ -29,12 +29,6 @@ public class Fuerza extends Ejercicio implements Medible, Exportable {
 
     }
 
-    // metodos de las interfaces medible y exportable
-    @Override
-    public double obtenerValorMedicion() {
-        return repeticiones * pesoKG;
-    }
-
     @Override
     public String toJson() {
         return new StringBuilder()
@@ -51,4 +45,14 @@ public class Fuerza extends Ejercicio implements Medible, Exportable {
 
     }
 
+    // método JSON
+    public static Fuerza fromJson(String json) {
+        String id = json.split("id:")[1].split(",")[0].trim();
+        String nombre = json.split("nombre:")[1].split(",")[0].trim();
+        int duracion = Integer.parseInt(json.split("duracion:")[1].split(",")[0].trim());
+        int repeticiones = Integer.parseInt(json.split("repeticiones:")[1].split(",")[0].trim());
+        double peso = Double.parseDouble(json.split("peso:")[1].trim().replace("}", ""));
+
+        return new Fuerza(repeticiones, peso, id, nombre, duracion);
+    }
 }
