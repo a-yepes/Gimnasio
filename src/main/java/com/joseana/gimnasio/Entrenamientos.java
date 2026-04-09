@@ -7,8 +7,8 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 //usar 4 stream, 1 regex,1 iterator, un array
@@ -108,8 +108,7 @@ public class Entrenamientos {
         return lista.stream()
                 .collect(Collectors.groupingBy(e -> e.getClass().getSimpleName()));
     }
-    // Devuelve un Map donde la clave es el nombre del tipo y el valor es la lista
-    // de ejercicios
+    // Devuelve un Map donde la clave es el nombre del tipo y el valor es la lista de ejercicios
 
     // método importarJSON
     public void importarJSON(String ruta) {

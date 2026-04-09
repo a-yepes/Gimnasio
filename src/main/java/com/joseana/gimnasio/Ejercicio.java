@@ -27,4 +27,8 @@ public abstract class Ejercicio {
 
     public abstract String toJson();
 
+public String getNombre() { return nombre; }
+public Integer getDuracionMinutos() { return duracionMinutos; }
+
+
 }
